@@ -1,0 +1,19 @@
+spring:
+  batch:
+    jdbc:
+      initialize-schema: never
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/batch2
+    username: spring
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+# SQLログ出力
+logging:
+  level:
+    '[org.hibernate.SQL]': debug
+    '[org.hibernate.type.descriptor.sql.BasicBinder]': trace
+    '[org.hibernate.type.EnumType]': trace

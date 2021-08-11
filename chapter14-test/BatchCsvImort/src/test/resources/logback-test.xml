@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+    <!-- Springのデフォルトロガー読込 -->
+    <include resource="/org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- コンソール出力設定 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-40.40logger{39} : %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- root設定 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- logger設定 -->
+    <logger name="com.example.demo" level="DEBUG"/>
+</configuration>

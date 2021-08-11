@@ -1,0 +1,25 @@
+spring:
+  batch:
+    job:
+      names: CsvImportJdbcJob
+    jdbc:
+      initialize-schema: always
+      schema: classpath:org/springframework/batch/core/schema-h2.sql
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: pass
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    '[com.example.demo]': debug
+
+mybatis:
+  mapper-locations: classpath*:/mapper/postgres/*.xml

@@ -1,0 +1,19 @@
+spring:
+  batch:
+    job:
+      names: CsvImportJpaJob
+    jdbc:
+      initialize-schema: always
+      schema: classpath:org/springframework/batch/core/schema-postgresql.sql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/batch
+    username: spring
+    password: password
+
+logging:
+  level:
+    '[com.example.demo]': debug
+
+mybatis:
+  mapper-locations: classpath*:/mapper/postgres/*.xml
