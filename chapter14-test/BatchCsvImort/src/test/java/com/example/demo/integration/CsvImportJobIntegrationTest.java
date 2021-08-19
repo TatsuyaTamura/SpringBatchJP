@@ -15,25 +15,24 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ContextConfiguration;
 import com.example.demo.BatchCsvImortApplication;
 import com.example.demo.domain.model.Employee;
-import lombok.extern.slf4j.Slf4j;
 
 @SpringBatchTest
 @ContextConfiguration(classes = {BatchCsvImortApplication.class})
 @DisplayName("CsvImportJobのIntegrationTest")
-@Slf4j
 public class CsvImportJobIntegrationTest {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
     /** 実行結果の確認用SQL */
     private static String SQL = "select * from employee order by id";
-    
-    private RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<Employee>(Employee.class);
-    
+
+    private RowMapper<Employee> rowMapper = 
+            new BeanPropertyRowMapper<Employee>(Employee.class);
+
     @Test
     @DisplayName("ユーザーがインポートされていること")
     public void jobTest() throws Exception {

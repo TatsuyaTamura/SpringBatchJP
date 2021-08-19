@@ -25,8 +25,10 @@ public class FirstTasklet implements Tasklet {
 
         // Stepのステータスを設定
         if ("0".equals(batchBranchValue)) {
+            // Success
             contribution.setExitStatus(ExitStatus.COMPLETED);
         } else {
+            // Fail
             contribution.setExitStatus(ExitStatus.FAILED);
         }
 

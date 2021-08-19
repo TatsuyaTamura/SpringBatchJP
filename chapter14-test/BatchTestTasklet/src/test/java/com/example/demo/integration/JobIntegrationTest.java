@@ -36,12 +36,12 @@ public class JobIntegrationTest {
     }
 
     @Test
-    @DisplayName("StepとJobのステータスが完了であること")
-    public void checkStatus() throws Exception {
+    @DisplayName("Job実行:StepとJobのステータスが完了であること")
+    public void executeJob() throws Exception {
         // 準備
         // Job起動パラメーター
         JobParameters jobParams = new JobParametersBuilder()
-                    .addString("param", "paramTest")
+                    .addString("param", "JobTest")
                     .toJobParameters();
 
         // テスト
@@ -55,5 +55,25 @@ public class JobIntegrationTest {
             .isEqualTo(stepExecution.getExitStatus()));
         // Jobのステータス
         assertThat(ExitStatus.COMPLETED).isEqualTo(jobExecution.getExitStatus());
+    }
+    
+    @Test
+    @DisplayName("Step1実行:Stepのステータスが完了であること")
+    public void executeStep1() throws Exception {
+        // 準備
+        // Job起動パラメーター
+        JobParameters jobParams = new JobParametersBuilder()
+                    .addString("param", "StepTest")
+                    .toJobParameters();
+
+        // テスト
+        JobExecution jobExecution = jobLauncherTestUtils
+                .launchStep("Step1", jobParams);
+
+        // 検証
+        // Stepのステータス
+        jobExecution.getStepExecutions().forEach(stepExecution ->
+            assertThat(ExitStatus.COMPLETED)
+            .isEqualTo(stepExecution.getExitStatus()));
     }
 }

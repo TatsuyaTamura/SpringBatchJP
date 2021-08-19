@@ -46,7 +46,7 @@ public abstract class BaseConfig {
     protected FlatFileHeaderCallback csvHeaderCallback;
 
     @Autowired
-    protected FlatFileFooterCallback CsvFooterCallback;
+    protected FlatFileFooterCallback csvFooterCallback;
 
     /** csv出力のWriterを生成 */
     @Bean
@@ -57,7 +57,7 @@ public abstract class BaseConfig {
         writer.setAppendAllowed(false); // 追記設定
         writer.setEncoding(StandardCharsets.UTF_8.name()); // 文字コード
         writer.setHeaderCallback(csvHeaderCallback); // ヘッダー
-        writer.setFooterCallback(CsvFooterCallback); // フッター
+        writer.setFooterCallback(csvFooterCallback); // フッター
 
         // ファイル出力先設定
         String filePath = property.outputPath();
